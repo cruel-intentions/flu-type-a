@@ -10,7 +10,7 @@
       };
     };
     overlays.default = final: prev: { lib = self.lib; };
-    lib = nixpkgs.lib.extend (self.overlay.lib);
+    lib = nixpkgs.lib.extend (self.overlays.lib);
     packages.x86_64-linux.default = with nixpkgs.legacyPackages.x86_64-linux; stdenvNoCC.mkDerivation {
       name        = "flu-type-a-test";
       src         = ./.;
