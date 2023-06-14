@@ -219,9 +219,9 @@ lib.types.fluent {
   options.ATT.default = {};
   options.ATT.type    = types.attrOf types.anything;
   options.BOO.default = true;
-  options.BOO.type    = types.bool/
+  options.BOO.type    = types.bool;
   options.FLT.default = 0.0;
-  options.FLT.type    = types.bool;
+  options.FLT.type    = types.float;
   options.INT.default = 0;
   options.INT.type    = types.int;
   options.LST.default = [ "LST" ];
