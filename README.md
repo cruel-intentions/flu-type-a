@@ -28,12 +28,28 @@ lib.types.fluent {
   options.FOO.type     = types.attrsOf types.str;
 }
 ```
+- if it has `enum`, is enum
+```nix
+lib.types.fluent {
+  options.FOO.enum  = [ "foo" "bar" ];
+} == {
+  options.FOO.type  = types.enum [ "foo" "bar" ];
+}
+```
 - if it has `listOf`, is listOf
  ```nix
 lib.types.fluent {
   options.BAR.listOf    = types.str;
 } == {
   options.BAR.type      = types.listOf types.str;
+}
+```
+- if it has `oneOf`, is oneOf
+```nix
+lib.types.fluent {
+  options.FOO.oneOf  = [ types.str types.int];
+} == {
+  options.FOO.type  = types.oneOf [ types.str types.int ];
 }
 ```
 - if it has `options`, is a submodule: 
@@ -172,7 +188,55 @@ lib.types.fluent {
 
 ~~Should we have other types like `oneOf`, `nullOr`~~
 
-We did it in another [PR](https://github.com/cruel-intentions/nixpkgs/pull/2), this branch is copied here
+We did it in another [PR](https://github.com/cruel-intentions/nixpkgs/pull/2), this branch is copied here.
+
+This also means we have mdDoc alias:
+
+```nix
+lib.types.fluent {
+  options.BAR.type  = types.str;
+  options.BAR.mdDoc = "Markdown description";
+} == {
+  options.BAR.type  = types.str;
+  options.BAR.description = lib.mdDoc "Markdown description";
+}
+```
+
+And type inference based on default value:
+
+```nix
+lib.types.fluent {
+  options.BOO.default = true;                             # bool
+  options.FLT.default = 0.0;                              # float
+  options.INT.default = 0;                                # int
+  options.PTH.default = ./.;                              # path
+  options.STR.default = "TYP-STR";                        # str
+  options.LST.default = [ "TYP-LST" ];                    # list of anything
+  options.NUL.default = null;                             # null or anything
+  options.ATT.default = {};                               # attr of anything
+  options.PKG.default = (import <nixpkgs> {}).emptyFile;  # package
+} == {
+  options.ATT.default = {};
+  options.ATT.type    = types.attrOf types.anything
+  options.BOO.default = true;
+  options.BOO.type    = types.bool
+  options.FLT.default = 0.0;
+  options.FLT.type    = types.bool;
+  options.INT.default = 0;
+  options.INT.type    = types.int;
+  options.LST.default = [ "LST" ];
+  options.LST.type    = types.listOf types.anything;
+  options.NUL.default = null;
+  options.NUL.type    = types.nullOr types.anything;
+  options.PKG.default = (import <nixpkgs> {}).emptyFile;
+  options.PKG.type    = types.package;
+  options.PTH.default = ./.;
+  options.PTH.type    = types.path;
+  options.STR.default = "TYP-STR";
+  options.STR.type    = types.str;
+}
+```
+
 
 **TODO**:
 
