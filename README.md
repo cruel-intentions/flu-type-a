@@ -171,11 +171,12 @@ lib.types.fluent {
 **Future work**
 
 ~~Should we have other types like `oneOf`, `nullOr`~~
-We did it in another [PR] (https://github.com/cruel-intentions/nixpkgs/pull/2), the branch tha was used copied here
+
+We did it in another [PR](https://github.com/cruel-intentions/nixpkgs/pull/2), this branch is copied here
 
 **TODO**:
 
-- [X] Configure tests (we have test cases but aren't configured)
+- [X] Configure tests
 - [ ] Documentation
 - [ ] Format code
 
