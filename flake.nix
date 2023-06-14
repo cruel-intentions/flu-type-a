@@ -6,7 +6,7 @@
     overlays.lib = final: prev: {
       types = prev.types // rec {
         flu    = import ./lib/fluent.nix;
-        fluent = flu { lib = final.lib; };
+        fluent = flu { lib = final; };
       };
     };
     overlays.default = final: prev: { lib = self.lib; };
