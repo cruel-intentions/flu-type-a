@@ -180,7 +180,13 @@ We did it in another [PR](https://github.com/cruel-intentions/nixpkgs/pull/2), t
 - [ ] Documentation
 - [ ] Format code
 
+
+
 ¹. https://www.youtube.com/watch?v=dTd499Y31ig
+
 ². https://github.com/DavHau/pkgs-modules/issues/1
+
 ³. https://discourse.nixos.org/t/nixpkgs-nixos-is-an-expert-system-database/671/7
+
+ª. https://www.cdc.gov/flu/symptoms/flu-vs-covid19.htm
 
