@@ -206,15 +206,15 @@ And type inference based on default value:
 
 ```nix
 lib.types.fluent {
+  options.ATT.default = {};                               # attr of anything
   options.BOO.default = true;                             # bool
   options.FLT.default = 0.0;                              # float
   options.INT.default = 0;                                # int
-  options.PTH.default = ./.;                              # path
-  options.STR.default = "TYP-STR";                        # str
   options.LST.default = [ "TYP-LST" ];                    # list of anything
   options.NUL.default = null;                             # null or anything
-  options.ATT.default = {};                               # attr of anything
   options.PKG.default = (import <nixpkgs> {}).emptyFile;  # package
+  options.PTH.default = ./.;                              # path
+  options.STR.default = "TYP-STR";                        # str
 } == {
   options.ATT.default = {};
   options.ATT.type    = types.attrOf types.anything;
