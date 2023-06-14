@@ -217,9 +217,9 @@ lib.types.fluent {
   options.PKG.default = (import <nixpkgs> {}).emptyFile;  # package
 } == {
   options.ATT.default = {};
-  options.ATT.type    = types.attrOf types.anything
+  options.ATT.type    = types.attrOf types.anything;
   options.BOO.default = true;
-  options.BOO.type    = types.bool
+  options.BOO.type    = types.bool/
   options.FLT.default = 0.0;
   options.FLT.type    = types.bool;
   options.INT.default = 0;
