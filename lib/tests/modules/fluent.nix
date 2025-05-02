@@ -238,7 +238,7 @@ lib.types.fluent {
   options.TYP-STR.default     = "TYP-STR";
   options.TYP-STR.description = "string option";
 
-  # mdDocs
+  # mdDocs is deprecated
   options.TYP-DOC.default     = "TYP-DOC";
   options.TYP-DOC.mdDoc       = "MD doc";
 }

@@ -117,7 +117,7 @@ let
         throw ''${concatStringsSep "." (breadcrumb ++ optName)} has no attr _type|${typeAttr}|${attrAttr}|${listAttr}|${nullAttr}|${subMAttr}'';
         result' = result // (
           if  optDef ? ${descAttr}
-          then { description = lib.mdDoc optDef.${descAttr}; }
+          then { description = optDef.${descAttr}; }
           else {});
     in
       if debug then

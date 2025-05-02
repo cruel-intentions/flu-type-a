@@ -97,7 +97,7 @@ checkConfigOutput '^null$'          config.TYP-NUL                      ./fluent
 checkConfigOutput '^"empty-file"$'  config.TYP-PKG.name                 ./fluent.nix
 checkConfigOutput 'tests/modules$'  config.TYP-PTH                      ./fluent.nix
 checkConfigOutput '^"TYP-STR"$'     config.TYP-STR                      ./fluent.nix
-checkConfigOutput '^"MD doc"$'      options.TYP-DOC.description.text    ./fluent.nix
+checkConfigOutput '^"MD doc"$'      options.TYP-DOC.description         ./fluent.nix
 
 
 cat <<EOF
